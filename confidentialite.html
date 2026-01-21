@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confidentialité — Le Bouclier Fiscal</title>
+    <meta name="description" content="Politique de confidentialité et gestion des données personnelles (RGPD) du Bouclier Fiscal.">
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS (via CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        violet: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                        },
+                        dark: '#0B0B0F',
+                        gray: {
+                            body: '#6B7280',
+                            light: '#F3F4F6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <style>
+        body { background-color: #FAFAFA; color: #0B0B0F; -webkit-font-smoothing: antialiased; }
+        .glass-nav { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .reveal-up { opacity: 0; transform: translateY(30px); }
+        
+        /* Typography for legal text */
+        .legal-content h2 { margin-top: 2rem; margin-bottom: 1rem; font-weight: 700; color: #0B0B0F; font-size: 1.25rem; }
+        .legal-content h3 { margin-top: 1.5rem; margin-bottom: 0.75rem; font-weight: 600; color: #4B5563; font-size: 1.1rem; }
+        .legal-content p { margin-bottom: 1rem; line-height: 1.6; color: #4B5563; }
+        .legal-content ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; color: #4B5563; }
+        .legal-content li { margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+    <!-- NAVBAR -->
+    <nav class="fixed w-full top-0 z-50 glass-nav h-20 flex items-center">
+        <div class="max-w-6xl mx-auto px-6 w-full flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold tracking-tight text-dark flex items-center gap-2 hover:opacity-80 transition-opacity">
+                <img src="logo.png" alt="Logo" class="w-8 h-8 rounded-lg object-contain">
+                <span>Le Bouclier Fiscal</span>
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="text-sm font-medium text-gray-600 hover:text-violet-600 transition-colors">Retour à l'accueil</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow pt-32 pb-20 px-6">
+        <div class="max-w-3xl mx-auto">
+            
+            <h1 class="reveal-up text-3xl md:text-4xl font-bold text-dark mb-8">Politique de Confidentialité</h1>
+
+            <!-- LEGAL CONTENT -->
+            <div class="reveal-up legal-content bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-gray-100">
+                
+                <p class="text-lg font-medium text-violet-900">Votre vie privée est essentielle. Voici comment nous traitons vos données en toute transparence.</p>
+                <p>La présente Politique de Confidentialité a pour but d'informer les utilisateurs du site "Le Bouclier Fiscal" des moyens mis en œuvre pour collecter, consulter, traiter et conserver les données personnelles.</p>
+
+                <h2>Article 1 : Responsable du traitement</h2>
+                <p>Les données sont collectées par l'entreprise AERIX, représentée par Oscar Sander (siège social : 99 rue de la noue, 89000 Auxerre, France).</p>
+
+                <h2>Article 2 : Données collectées</h2>
+                <p>Nous collectons uniquement les données nécessaires au bon fonctionnement du service :</p>
+                <ul>
+                    <li><strong>Lors d'une commande :</strong> Nom, Prénom, Adresse Email, Adresse Postale (pour l'envoi du livre broché).</li>
+                    <li><strong>Lors de l'inscription à la Plateforme :</strong> Données d'authentification (voir Article 3).</li>
+                    <li><strong>Données de navigation :</strong> Cookies techniques nécessaires au fonctionnement du site.</li>
+                </ul>
+
+                <h2>Article 3 : Authentification via Google Firebase</h2>
+                <p>Pour faciliter votre inscription et sécuriser votre accès à la plateforme fiscale, nous utilisons le service d'authentification <strong>Google Firebase Auth</strong>.</p>
+                <p>Lorsque vous choisissez de vous connecter via votre compte Google ("Sign in with Google") :</p>
+                <ul>
+                    <li>Nous recevons automatiquement de la part de Google : votre adresse email, votre nom complet, votre photo de profil et un identifiant unique (User ID).</li>
+                    <li>Ces données sont utilisées exclusivement pour créer votre compte utilisateur sur notre plateforme et vous identifier lors de vos visites.</li>
+                    <li>Nous n'avons jamais accès à votre mot de passe Google.</li>
+                </ul>
+                <p>Vous pouvez à tout moment révoquer l'accès donné à notre application via les paramètres de sécurité de votre compte Google.</p>
+
+                <h2>Article 4 : Finalités du traitement</h2>
+                <p>Vos données sont traitées pour les raisons suivantes :</p>
+                <ul>
+                    <li>Gestion et suivi des commandes (envoi des ebooks et livres).</li>
+                    <li>Gestion de l'accès à l'espace membre (Plateforme fiscale).</li>
+                    <li>Support client et communication relative à nos mises à jour légales.</li>
+                    <li>Sécurité et prévention de la fraude.</li>
+                </ul>
+
+                <h2>Article 5 : Partage des données</h2>
+                <p>Vos données personnelles ne sont jamais vendues à des tiers. Elles peuvent être partagées uniquement avec nos prestataires techniques de confiance pour l'exécution du service :</p>
+                <ul>
+                    <li><strong>Google (Firebase) :</strong> Hébergement de la base de données utilisateurs et authentification.</li>
+                    <li><strong>Revolut / Stripe :</strong> Traitement sécurisé des paiements (nous ne stockons aucune donnée bancaire).</li>
+                    <li><strong>Amazon KDP :</strong> Si vous achetez via Amazon, vos données sont traitées selon leur propre politique de confidentialité.</li>
+                </ul>
+
+                <h2>Article 6 : Sécurité des données</h2>
+                <p>Nous mettons en œuvre des mesures techniques appropriées pour protéger vos données contre l'accès non autorisé. L'intégralité du site est sécurisée par le protocole HTTPS. Les mots de passe et identifiants sont gérés via l'infrastructure sécurisée de Google Cloud.</p>
+
+                <h2>Article 7 : Vos droits (RGPD)</h2>
+                <p>Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez des droits suivants :</p>
+                <ul>
+                    <li>Droit d'accès et de rectification de vos données.</li>
+                    <li>Droit à l'effacement ("droit à l'oubli").</li>
+                    <li>Droit à la portabilité de vos données.</li>
+                </ul>
+                <p>Pour exercer ces droits, contactez-nous simplement à : <a href="mailto:fiscor@proton.me" class="text-violet-600 font-medium">fiscor@proton.me</a>.</p>
+
+                <h2>Article 8 : Cookies</h2>
+                <p>Le site utilise des cookies techniques indispensables à l'authentification (session Firebase). En continuant à naviguer, vous acceptez l'utilisation de ces cookies strictement nécessaires.</p>
+
+            </div>
+            
+            <div class="mt-8 text-center reveal-up">
+                <p class="text-xs text-gray-400">Dernière mise à jour : 01/09/2025</p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER (Identique à Contact/Index) -->
+    <footer class="bg-[#1e0b36] text-white pt-10 pb-10 border-t border-violet-900/50 relative overflow-hidden mt-auto">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-violet-500 via-fuchsia-500 to-violet-500"></div>
+        <div class="max-w-6xl mx-auto px-6 relative z-10 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-sm text-violet-200/80">
+                © 2024 Le Bouclier Fiscal.
+            </div>
+            <div class="flex gap-6 text-sm">
+                <a href="cgv.html" class="text-violet-200/60 hover:text-white transition-colors">CGV</a>
+                <a href="cgu.html" class="text-violet-200/60 hover:text-white transition-colors">CGU</a>
+                <a href="confidentialite.html" class="text-white font-medium transition-colors">Confidentialité</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        gsap.to(".reveal-up", {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: "power3.out"
+        });
+    </script>
+</body>
+</html>

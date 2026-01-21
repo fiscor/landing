@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGV — Le Bouclier Fiscal</title>
+    <meta name="description" content="Conditions Générales de Vente et Mentions Légales du site Le Bouclier Fiscal.">
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS (via CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        violet: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                        },
+                        dark: '#0B0B0F',
+                        gray: {
+                            body: '#6B7280',
+                            light: '#F3F4F6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <style>
+        body { background-color: #FAFAFA; color: #0B0B0F; -webkit-font-smoothing: antialiased; }
+        .glass-nav { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .reveal-up { opacity: 0; transform: translateY(30px); }
+        
+        /* Typography for legal text */
+        .legal-content h2 { margin-top: 2rem; margin-bottom: 1rem; font-weight: 700; color: #0B0B0F; font-size: 1.25rem; }
+        .legal-content p { margin-bottom: 1rem; line-height: 1.6; color: #4B5563; }
+        .legal-content ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; color: #4B5563; }
+        .legal-content li { margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+    <!-- NAVBAR -->
+    <nav class="fixed w-full top-0 z-50 glass-nav h-20 flex items-center">
+        <div class="max-w-6xl mx-auto px-6 w-full flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold tracking-tight text-dark flex items-center gap-2 hover:opacity-80 transition-opacity">
+                <img src="logo.png" alt="Logo" class="w-8 h-8 rounded-lg object-contain">
+                <span>Le Bouclier Fiscal</span>
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="text-sm font-medium text-gray-600 hover:text-violet-600 transition-colors">Retour à l'accueil</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow pt-32 pb-20 px-6">
+        <div class="max-w-3xl mx-auto">
+            
+            <h1 class="reveal-up text-3xl md:text-4xl font-bold text-dark mb-8">Conditions Générales de Vente (CGV)</h1>
+
+            <!-- MENTIONS LEGALES BOX -->
+            <div class="reveal-up bg-violet-50 border border-violet-100 rounded-2xl p-8 mb-10">
+                <h2 class="text-violet-900 font-bold mb-4 uppercase text-sm tracking-wider">Mentions Légales</h2>
+                <div class="grid md:grid-cols-2 gap-6 text-sm text-violet-800/80">
+                    <div>
+                        <p class="font-bold text-violet-900">Éditeur :</p>
+                        <p>Entreprise AERIX (Micro-entreprise)</p>
+                        <p>Responsable : Oscar Sander</p>
+                        <p>99 rue de la noue, 89000 Auxerre, France</p>
+                    </div>
+                    <div>
+                        <p class="font-bold text-violet-900">Contact :</p>
+                        <p>Email : fiscor@proton.me</p>
+                        <p>Tél : +33 7 44 80 14 99</p>
+                    </div>
+                    <div class="md:col-span-2 border-t border-violet-200 pt-4 mt-2">
+                        <p><span class="font-bold">SIREN :</span> 990 237 927 | <span class="font-bold">SIRET :</span> 990 237 927 00019</p>
+                        <p><span class="font-bold">TVA Intracommunautaire :</span> FR38990237927</p>
+                        <p><span class="font-bold">RCS :</span> Auxerre</p>
+                        <p><span class="font-bold">Date de création :</span> 01/09/2025</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LEGAL CONTENT -->
+            <div class="reveal-up legal-content bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-gray-100">
+                
+                <h2>Article 1 : Objet</h2>
+                <p>Les présentes Conditions Générales de Vente (CGV) régissent les relations contractuelles entre l'entreprise AERIX (ci-après "le Vendeur") et toute personne physique ou morale (ci-après "le Client") souhaitant procéder à un achat via le site internet "Le Bouclier Fiscal".</p>
+                <p>Le site propose la vente de produits numériques (ebooks) et l'accès à une plateforme en ligne de ressources fiscales.</p>
+
+                <h2>Article 2 : Produits et Services</h2>
+                <p>Les produits proposés sont les suivants :</p>
+                <ul>
+                    <li><strong>Formule Gratuite :</strong> Accès limité à la plateforme et au premier chapitre de l'ebook (téléchargement gratuit).</li>
+                    <li><strong>Ebook seul :</strong> Livre numérique au format PDF/EPUB.</li>
+                    <li><strong>Pack Complet :</strong> Comprend le livre broché, le livre numérique, l'accès à vie à la plateforme fiscale complète et une heure de coaching.</li>
+                </ul>
+
+                <h2>Article 3 : Prix et Modalités de Commande</h2>
+                <p>Les prix sont indiqués en euros (€) toutes taxes comprises (TTC). Le Vendeur se réserve le droit de modifier ses prix à tout moment, mais le produit sera facturé sur la base du tarif en vigueur au moment de la validation de la commande.</p>
+                
+                <p><strong>3.1 Achat de l'Ebook seul ou Livre Broché seul :</strong></p>
+                <p>La vente de l'ebook seul ou du livre broché seul est réalisée par l'intermédiaire de la plateforme tierce Amazon KDP. En cliquant sur le bouton d'achat correspondant, le Client est redirigé vers le site d'Amazon. La transaction est alors soumise aux Conditions Générales de Vente d'Amazon.</p>
+
+                <p><strong>3.2 Achat du Pack Complet :</strong></p>
+                <p>La vente du Pack Complet est réalisée directement par AERIX via un lien de paiement sécurisé fourni par Revolut Pro. Le contrat est conclu dès la validation du paiement par le Client.</p>
+
+                <h2>Article 4 : Paiement</h2>
+                <p>Pour le Pack Complet, le paiement est exigible immédiatement à la commande. Le règlement s'effectue par carte bancaire via l'infrastructure sécurisée de Revolut Pro. Aucune donnée bancaire n'est conservée par le site "Le Bouclier Fiscal".</p>
+
+                <h2>Article 5 : Livraison</h2>
+                <p><strong>Produits numériques (Ebook, Accès plateforme) :</strong> La livraison est effectuée immédiatement après validation de la commande (ou inscription pour l'offre gratuite) par envoi d'un email contenant les liens de téléchargement ou d'accès.</p>
+                <p><strong>Produits physiques (Livre inclus dans le Pack) :</strong> Le livre broché inclus dans le Pack Complet est expédié par voie postale à l'adresse indiquée lors du paiement, dans un délai moyen de 3 à 7 jours ouvrés.</p>
+
+                <h2>Article 6 : Droit de Rétractation</h2>
+                <p>Conformément à l'article L221-28 du Code de la Consommation, le droit de rétractation ne peut être exercé pour les contrats de fourniture d'un contenu numérique non fourni sur un support matériel dont l'exécution a commencé après accord préalable exprès du consommateur et renoncement exprès à son droit de rétractation.</p>
+                <p>En validant sa commande pour un produit numérique (Ebook ou Accès Plateforme), le Client accepte que l'accès au contenu soit immédiat et renonce expressément à son droit de rétractation.</p>
+
+                <h2>Article 7 : Responsabilité et Avertissement</h2>
+                <p>L'éditeur (AERIX) et l'auteur du guide "Le Bouclier Fiscal" fournissent des informations à titre éducatif et informatif uniquement. Bien que nous nous efforcions de maintenir les informations à jour, la fiscalité est une matière complexe et évolutive.</p>
+                <p>Les contenus proposés ne constituent en aucun cas un conseil juridique, fiscal ou comptable personnalisé. Ils ne sauraient remplacer l'avis d'un professionnel qualifié (avocat fiscaliste, expert-comptable). AERIX décline toute responsabilité quant aux conséquences directes ou indirectes de l'utilisation des informations fournies.</p>
+
+                <h2>Article 8 : Données Personnelles</h2>
+                <p>Les informations recueillies sont nécessaires au traitement de la commande et à l'envoi des accès. Conformément au RGPD, le Client dispose d'un droit d'accès, de rectification et de suppression de ses données en contactant : fiscor@proton.me.</p>
+
+                <h2>Article 9 : Droit Applicable</h2>
+                <p>Les présentes CGV sont soumises à la loi française. En cas de litige, une solution amiable sera recherchée avant toute action judiciaire. À défaut, les tribunaux compétents seront ceux du ressort du siège social d'AERIX (Auxerre).</p>
+
+            </div>
+            
+            <div class="mt-8 text-center reveal-up">
+                <p class="text-xs text-gray-400">Dernière mise à jour : 01/09/2025</p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER (Identique à Contact/Index) -->
+    <footer class="bg-[#1e0b36] text-white pt-10 pb-10 border-t border-violet-900/50 relative overflow-hidden mt-auto">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-violet-500 via-fuchsia-500 to-violet-500"></div>
+        <div class="max-w-6xl mx-auto px-6 relative z-10 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-sm text-violet-200/80">
+                © 2024 Le Bouclier Fiscal.
+            </div>
+            <div class="flex gap-6 text-sm">
+                <a href="cgv.html" class="text-white font-medium transition-colors">CGV</a>
+                <a href="cgu.html" class="text-violet-200/60 hover:text-white transition-colors">CGU</a>
+                <a href="confidentialite.html" class="text-violet-200/60 hover:text-white transition-colors">Confidentialité</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        gsap.to(".reveal-up", {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: "power3.out"
+        });
+    </script>
+</body>
+</html>
