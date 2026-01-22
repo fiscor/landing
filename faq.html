@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ — Le Bouclier Fiscal</title>
+    <meta name="description" content="Toutes les réponses à vos questions sur Le Bouclier Fiscal et la plateforme d'optimisation.">
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        violet: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                        },
+                        dark: '#0B0B0F',
+                        gray: {
+                            body: '#6B7280',
+                            light: '#F3F4F6'
+                        }
+                    },
+                    boxShadow: {
+                        'premium': '0 20px 40px -5px rgba(109, 40, 217, 0.15)',
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'card-hover': '0 0 0 1px rgba(109, 40, 217, 0.1), 0 12px 32px -4px rgba(109, 40, 217, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+        body {
+            background-color: #FFFFFF;
+            color: #0B0B0F;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Accordion Styles */
+        .accordion-content {
+            transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .accordion-content.active {
+            opacity: 1;
+        }
+        
+        /* Category Navigation Sticky */
+        .category-nav-link.active {
+            color: #7c3aed; /* violet-600 */
+            background-color: #f5f3ff; /* violet-50 */
+            border-right: 3px solid #7c3aed;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-violet-100 selection:text-violet-900">
+
+    <!-- NAVBAR (Simplified for secondary page but visually identical) -->
+    <nav class="fixed w-full top-0 z-50 bg-white/90 backdrop-blur-lg border-b border-gray-100 h-20 flex items-center">
+        <div class="max-w-6xl mx-auto px-6 w-full flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold tracking-tight text-dark flex items-center gap-2 group">
+                <img src="logo.png" alt="Logo" class="w-8 h-8 rounded-lg object-contain shadow-lg group-hover:scale-105 transition-transform duration-300">
+                <span>Le Bouclier Fiscal</span>
+            </a>
+
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="text-sm font-medium text-gray-600 hover:text-violet-600 transition-colors">Accueil</a>
+                <a href="index.html#pricing" class="text-sm font-medium text-gray-600 hover:text-violet-600 transition-colors">Offres</a>
+                
+                <!-- Dynamic Auth Buttons -->
+                <a href="index.html" id="nav-login-btn" class="text-sm font-medium text-gray-600 hover:text-violet-600 transition-colors">Connexion</a>
+                
+                <div id="nav-user-area" class="hidden items-center gap-4">
+                    <a href="index.html#account" class="text-sm font-bold text-violet-600 bg-violet-50 px-3 py-1.5 rounded-lg border border-violet-100 hover:bg-violet-100 transition-colors">
+                        Mon Espace
+                    </a>
+                </div>
+
+                <a href="index.html#pricing" class="bg-dark text-white px-5 py-2.5 rounded-full text-sm font-semibold shadow-lg hover:bg-gray-800 transition-all">
+                    Obtenir le guide
+                </a>
+            </div>
+
+            <!-- Mobile Burger -->
+            <a href="index.html" class="md:hidden text-sm font-medium text-gray-600 bg-gray-100 px-3 py-2 rounded-lg">
+                Retour
+            </a>
+        </div>
+    </nav>
+
+    <!-- HEADER -->
+    <header class="pt-40 pb-20 px-6 bg-gradient-to-b from-white via-violet-50/30 to-white">
+        <div class="max-w-4xl mx-auto text-center space-y-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-100 text-violet-700 text-xs font-bold uppercase tracking-wide">
+                Centre d'aide
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-dark tracking-tight">Foire Aux Questions</h1>
+            <p class="text-xl text-gray-500 max-w-2xl mx-auto">
+                Tout ce que vous devez savoir sur le guide, la plateforme et l'optimisation fiscale.
+            </p>
+        </div>
+    </header>
+
+    <!-- CONTENT LAYOUT -->
+    <div class="max-w-6xl mx-auto px-6 pb-32 flex flex-col md:flex-row gap-16 relative">
+        
+        <!-- SIDEBAR (Desktop only) -->
+        <aside class="hidden md:block w-64 shrink-0 relative">
+            <div class="sticky top-32 space-y-1">
+                <p class="px-4 py-2 text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Catégories</p>
+                
+                <a href="#general" class="category-nav-link block px-4 py-3 text-sm font-medium text-gray-600 hover:text-violet-600 rounded-l-lg hover:bg-gray-50 transition-all active">
+                    Généralités
+                </a>
+                <a href="#ebook" class="category-nav-link block px-4 py-3 text-sm font-medium text-gray-600 hover:text-violet-600 rounded-l-lg hover:bg-gray-50 transition-all">
+                    Livre & Contenu
+                </a>
+                <a href="#platform" class="category-nav-link block px-4 py-3 text-sm font-medium text-gray-600 hover:text-violet-600 rounded-l-lg hover:bg-gray-50 transition-all">
+                    La Plateforme
+                </a>
+                <a href="#billing" class="category-nav-link block px-4 py-3 text-sm font-medium text-gray-600 hover:text-violet-600 rounded-l-lg hover:bg-gray-50 transition-all">
+                    Achat & Facturation
+                </a>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="flex-1 space-y-20">
+
+            <!-- Section 1: Généralités -->
+            <section id="general" class="scroll-mt-32">
+                <h2 class="text-2xl font-bold text-dark mb-8 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-violet-100 text-violet-600 flex items-center justify-center text-sm">1</span>
+                    Généralités
+                </h2>
+                
+                <div class="space-y-4">
+                    <!-- Q1 -->
+                    <div class="group border border-gray-200 rounded-2xl overflow-hidden bg-white hover:border-violet-200 transition-colors">
+                        <button class="accordion-header w-full flex items-center justify-between p-6 text-left focus:outline-none">
+                            <span class="font-semibold text-dark text-lg">À qui s'adresse le Bouclier Fiscal ?</span>
+                            <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content bg-gray-50">
+                            <div class="p-6 pt-0 text-gray-600 leading-relaxed">
+                                Le guide est conçu pour <strong>tous les entrepreneurs indépendants en France</strong> : auto-entrepreneurs, freelances en société (SASU, EURL), consultants, coachs, e-commerçants. <br><br>
+                                Il est particulièrement efficace si vous réalisez plus de 30k€ de chiffre d'affaires annuel et que vous souhaitez optimiser vos charges et impôts légalement.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="group border border-gray-200 rounded-2xl overflow-hidden bg-white hover:border-violet-200 transition-colors">
+                        <button class="accordion-header w-full flex items-center justify-between p-6 text-left focus:outline-none">
+                            <span class="font-semibold text-dark text-lg">J'ai déjà un expert-comptable, est-ce utile ?</span>
+                            <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content bg-gray-50">
+                            <div class="p-6 pt-0 text-gray-600 leading-relaxed">
+                                <strong>Oui, c'est complémentaire.</strong> Votre expert-comptable gère votre conformité (bilan, liasses). Le Bouclier Fiscal vous donne la stratégie et le "mindset" pour poser les bonnes questions et ne pas laisser d'argent sur la table. Beaucoup de comptables ne proposent pas d'optimisation proactive ; c'est à vous de piloter votre navire.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q3 -->
+                    <div class="group border border-gray-200 rounded-2xl overflow-hidden bg-white hover:border-violet-200 transition-colors">
+                        <button class="accordion-header w-full flex items-center justify-between p-6 text-left focus:outline-none">
+                            <span class="font-semibold text-dark text-lg">Est-ce légal ?</span>
+                            <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content bg-gray-50">
+                            <div class="p-6 pt-0 text-gray-600 leading-relaxed">
+                                Absolument. Nous enseignons l'<strong>optimisation fiscale</strong> (utiliser les lois existantes intelligemment), ce qui est totalement différent de la fraude fiscale (cacher de l'argent). Toutes les méthodes présentées respectent le Code Général des Impôts français.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Livre & Contenu -->
+            <section id="ebook" class="scroll-mt-32">
+                <h2 class="text-2xl font-bold text-dark mb-8 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-violet-100 text-violet-600 flex items-center justify-center text-sm">2</span>
+                    Livre & Contenu
+                </h2>
+                
+                <div class="space-y-4">
+                    <!-- Q1 -->
+                    <div class="group border border-gray-200 rounded-2xl overflow-hidden bg-white hover:border-violet-200 transition-colors">
+                        <button class="accordion-header w-full flex items-center justify-between p-6 text-left focus:outline-none">
+                            <span class="font-semibold text-dark text-lg">Quel est le format du livre ?</span>
+                            <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content bg-gray-50">
+                            <div class="p-6 pt-0 text-gray-600 leading-relaxed">
+                                Si vous choisissez l'option <strong>Numérique</strong>, vous recevez un fichier PDF haute qualité et un fichier EPUB compatible avec toutes les liseuses/tablettes. <br>
+                                Si vous choisissez le <strong>Pack Complet</strong>, vous recevez le livre physique (broché, ~150 pages) directement chez vous par la poste, EN PLUS de la version numérique.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="group border border-gray-200 rounded-2xl overflow-hidden bg-white hover:border-violet-200 transition-colors">
+                        <button class="accordion-header w-full flex items-center justify-between p-6 text-left focus:outline-none">
+                            <span class="font-semibold text-dark text-lg">Est-ce que c'est difficile à lire ?</span>
+                            <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content bg-gray-50">
+                            <div class="p-6 pt-0 text-gray-600 leading-relaxed">
+                                Non ! C'est tout l'intérêt du Bouclier Fiscal. Nous avons banni le jargon d'avocat. Tout est écrit en français simple, avec des schémas, des exemples concrets ("Julien gagne 40k€...") et des check-lists. C'est fait pour être lu en une soirée.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Plateforme -->
+            <section id="platform" class="scroll-mt-32">
+                <h2 class="text-2xl font-bold text-dark mb-8 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-violet-100 text-violet-600 flex items-center justify-center text-sm">3</span>
+                    La Plateforme
+                </h2>
+                
+                <div class="space-y-4">
+                    <!-- Q1 -->
+                    <div class="group border border-gray-200 rounded-2xl overflow-hidden bg-white hover:border-violet-200 transition-colors">
+                        <button class="accordion-header w-full flex items-center justify-between p-6 text-left focus:outline-none">
+                            <span class="font-semibold text-dark text-lg">Comment accéder à la plateforme ?</span>
+                            <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content bg-gray-50">
+                            <div class="p-6 pt-0 text-gray-600 leading-relaxed">
+                                C'est une application web. Après votre achat, vous pouvez vous connecter directement sur ce site via le bouton <strong>"Mon Espace"</strong> ou "Connexion" en haut à droite. Vos identifiants sont l'email utilisé lors de l'achat.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="group border border-gray-200 rounded-2xl overflow-hidden bg-white hover:border-violet-200 transition-colors">
+                        <button class="accordion-header w-full flex items-center justify-between p-6 text-left focus:outline-none">
+                            <span class="font-semibold text-dark text-lg">Qu'est-ce qu'il y a dedans ?</span>
+                            <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content bg-gray-50">
+                            <div class="p-6 pt-0 text-gray-600 leading-relaxed">
+                                La plateforme Premium contient :
+                                <ul class="list-disc list-inside mt-2 space-y-1">
+                                    <li>Des calculateurs (impôts, dividendes, SASU vs Micro).</li>
+                                    <li>Une bibliothèque de documents Word/Excel modifiables (contrats, AG, notes de frais).</li>
+                                    <li>Les mises à jour des lois de finances 2024/2025.</li>
+                                    <li>Un accès direct au support.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Q3 -->
+                    <div class="group border border-gray-200 rounded-2xl overflow-hidden bg-white hover:border-violet-200 transition-colors">
+                        <button class="accordion-header w-full flex items-center justify-between p-6 text-left focus:outline-none">
+                            <span class="font-semibold text-dark text-lg">Est-ce compatible Mac et PC ?</span>
+                            <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content bg-gray-50">
+                            <div class="p-6 pt-0 text-gray-600 leading-relaxed">
+                                Oui, la plateforme est accessible depuis n'importe quel navigateur internet (Chrome, Safari, Firefox), sur ordinateur, tablette ou mobile. Rien à installer.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+             <!-- Section 4: Achat -->
+             <section id="billing" class="scroll-mt-32">
+                <h2 class="text-2xl font-bold text-dark mb-8 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-violet-100 text-violet-600 flex items-center justify-center text-sm">4</span>
+                    Achat & Facturation
+                </h2>
+                
+                <div class="space-y-4">
+                    <!-- Q1 -->
+                    <div class="group border border-gray-200 rounded-2xl overflow-hidden bg-white hover:border-violet-200 transition-colors">
+                        <button class="accordion-header w-full flex items-center justify-between p-6 text-left focus:outline-none">
+                            <span class="font-semibold text-dark text-lg">Puis-je avoir une facture pour ma société ?</span>
+                            <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content bg-gray-50">
+                            <div class="p-6 pt-0 text-gray-600 leading-relaxed">
+                                Bien sûr. Une facture avec TVA récupérable est générée automatiquement après le paiement et envoyée par email. Vous pouvez la passer en frais professionnels ("Documentation technique et formation").
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="group border border-gray-200 rounded-2xl overflow-hidden bg-white hover:border-violet-200 transition-colors">
+                        <button class="accordion-header w-full flex items-center justify-between p-6 text-left focus:outline-none">
+                            <span class="font-semibold text-dark text-lg">Le paiement est-il sécurisé ?</span>
+                            <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content bg-gray-50">
+                            <div class="p-6 pt-0 text-gray-600 leading-relaxed">
+                                Nous utilisons Revolut Business et Stripe, deux des leaders mondiaux du paiement en ligne. Vos coordonnées bancaires sont cryptées et ne transitent jamais par nos serveurs.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA -->
+            <div class="bg-gray-900 rounded-3xl p-10 text-center text-white relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-violet-500 rounded-full blur-[80px] opacity-20"></div>
+                <div class="relative z-10">
+                    <h3 class="text-2xl font-bold mb-4">Une autre question ?</h3>
+                    <p class="text-gray-400 mb-8 max-w-lg mx-auto">Notre équipe est là pour vous aider. Réponse sous 24h ouvrées.</p>
+                    <a href="mailto:contact@fiscor.fr" class="inline-block bg-white text-dark font-bold py-3 px-8 rounded-xl hover:bg-gray-100 transition-colors">
+                        Nous contacter
+                    </a>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- FOOTER (Same as Index) -->
+    <footer class="bg-[#1e0b36] text-white pt-20 pb-10 border-t border-violet-900/50 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
+                <div class="md:col-span-5 space-y-6">
+                    <a href="index.html" class="flex items-center gap-3 text-2xl font-bold tracking-tight text-white group">
+                        <img src="logo.png" alt="Logo" class="w-10 h-10 rounded-xl object-contain bg-white p-1 group-hover:scale-105 transition-transform duration-300">
+                        <span>Le Bouclier Fiscal</span>
+                    </a>
+                    <p class="text-violet-200/80 text-sm leading-relaxed max-w-sm font-light">
+                        La première plateforme dédiée à l'optimisation fiscale pour les entrepreneurs indépendants.
+                    </p>
+                </div>
+                <div class="md:col-span-3"></div>
+                <div class="md:col-span-2">
+                    <h4 class="font-bold text-white mb-6 text-lg">Légal</h4>
+                    <ul class="space-y-4 text-sm text-violet-200/70">
+                        <li><a href="#" class="hover:text-white">CGV</a></li>
+                        <li><a href="#" class="hover:text-white">Confidentialité</a></li>
+                    </ul>
+                </div>
+                <div class="md:col-span-2">
+                    <h4 class="font-bold text-white mb-6 text-lg">Support</h4>
+                    <ul class="space-y-4 text-sm text-violet-200/70">
+                        <li><a href="mailto:contact@fiscor.fr" class="hover:text-white">Contact</a></li>
+                        <li><a href="faq.html" class="hover:text-white">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 pt-8 border-t border-white/5">
+                <div class="text-sm text-violet-300/60">© 2024 Le Bouclier Fiscal. Tous droits réservés.</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LOGIC -->
+    <script type="module">
+        // Import basic auth checking to update Navbar state
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCBRfYL47WBzd1RzDfoRxwwBtrOr4wYZeQ",
+            authDomain: "fiscor-90c09.firebaseapp.com",
+            projectId: "fiscor-90c09",
+            storageBucket: "fiscor-90c09.firebasestorage.app",
+            messagingSenderId: "255294631895",
+            appId: "1:255294631895:web:43c321dc799ffa7cffe592",
+            measurementId: "G-VB1M9BVZZP"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        const navLoginBtn = document.getElementById('nav-login-btn');
+        const navUserArea = document.getElementById('nav-user-area');
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                if(navLoginBtn) navLoginBtn.classList.add('hidden');
+                if(navUserArea) {
+                    navUserArea.classList.remove('hidden');
+                    navUserArea.classList.add('flex');
+                }
+            } else {
+                if(navLoginBtn) navLoginBtn.classList.remove('hidden');
+                if(navUserArea) {
+                    navUserArea.classList.add('hidden');
+                    navUserArea.classList.remove('flex');
+                }
+            }
+        });
+    </script>
+
+    <script>
+        // --- ACCORDION LOGIC ---
+        const accordions = document.querySelectorAll('.accordion-header');
+
+        accordions.forEach(acc => {
+            acc.addEventListener('click', () => {
+                const content = acc.nextElementSibling;
+                const icon = acc.querySelector('svg');
+                
+                // Close others if needed (optional style choice, keeping open allows comparing answers)
+                // To force close others, uncomment below:
+                /*
+                accordions.forEach(otherAcc => {
+                    if (otherAcc !== acc && otherAcc.nextElementSibling.classList.contains('active')) {
+                        otherAcc.nextElementSibling.style.maxHeight = null;
+                        otherAcc.nextElementSibling.classList.remove('active');
+                        otherAcc.querySelector('svg').style.transform = 'rotate(0deg)';
+                    }
+                });
+                */
+
+                // Toggle Current
+                content.classList.toggle('active');
+                
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                    icon.style.transform = 'rotate(0deg)';
+                    acc.parentElement.classList.remove('border-violet-200', 'bg-violet-50/10');
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    icon.style.transform = 'rotate(180deg)';
+                    // Highlight active card
+                    acc.parentElement.classList.add('border-violet-200', 'bg-violet-50/10');
+                }
+            });
+        });
+
+        // --- GSAP ANIMATIONS ---
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Header Reveal
+        gsap.from("header h1, header p, header div", {
+            y: 30,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power3.out"
+        });
+
+        // Content Reveal
+        gsap.utils.toArray('section').forEach(section => {
+            gsap.from(section, {
+                opacity: 0,
+                y: 50,
+                duration: 0.8,
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 85%"
+                }
+            });
+        });
+
+        // --- SCROLL SPY FOR SIDEBAR ---
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.category-nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
